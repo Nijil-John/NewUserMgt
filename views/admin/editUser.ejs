@@ -1,0 +1,92 @@
+<%- include('../layouts/header.ejs') %>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+}
+
+main {
+    margin-top: 50px;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="hidden"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button {
+    margin-top: 20px;
+}
+
+button a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+button a:hover {
+    text-decoration: underline;
+}
+
+
+
+</style>
+
+
+
+    <main>
+        <h2>Edit <%= user.name %>'s Data</h2>
+        <form action="/admin/edit-user" method="POST" id="registeration">
+
+            <input type="text" id="name" name="name" value="<%= user.name %>" required><br><br>
+
+
+            <input type="email" id="email" name="email" value="<%= user.email %>" required><br><br>
+
+
+            <input type="text" id="mobile" name="mno" pattern="[0-9]{10}" value="<%= user.mobile %>" required>
+
+            <br><br>
+            <input type="hidden" name="id" value="<%= user._id%>">
+
+            <input type="submit" value="update user">
+        </form>
+        <br><br>
+
+        <button><a href="/admin/dashboard"> back </a></button>
+        <% if(typeof message !=="undefined" ){ %>
+            <p style="color: #ff0000;">
+                <%= message %>
+            </p>
+            <% } %>
+    
+
+            
+    </main>
+
+    <%- include('../layouts/footer.ejs') %>

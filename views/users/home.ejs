@@ -1,0 +1,100 @@
+<%- include('../layouts/header.ejs') %>
+
+
+
+<style>
+    /* Add your CSS styles here */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0; /* Light gray background */
+    }
+    #sidebar {
+    width: 199px;
+    background-color: #3F511F;
+    padding: 28px;
+    float: left;
+    height: 99vh;
+    border-radius: 44px;
+    color: #FFD;
+    margin-left: 5px;
+}
+    #content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    #head {
+    background-color: #3F5215;
+    color: #FD7;
+    padding: 25px;
+    border-radius: 90px;
+    margin: 5px;
+}
+    .blog-card {
+        border: 1px solid #e8e8e8;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px; /* Increased margin bottom for space */
+        background-color: #fff; /* White background */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for cards */
+    }
+    .blog-card h2 {
+        margin-top: 0;
+        color: #3f51b5; /* Dark blue heading color */
+    }
+    /* Add hover effect for cards */
+    .blog-card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+</style>
+<body>
+    <h1 id="head">Welcome <%= users.name %>,</h1>
+<div id="sidebar">
+    
+    <h2><%= users.name %></h2>
+    <p><%= users.email %></p>
+    <p><%= users.mobile %></p>
+    <button onclick="logout()">Logout</button>
+</div>
+<div id="content">
+    <nav>
+        <section>
+            <div class="blog-card">
+                <h2>Hard work...</h2>
+                <p>If you want to be successful in any walk of life, hard work is a necessity!
+        
+                    You cannot get anywhere without working hard. The trouble is that hard work is, hard! This stops a lot of us from doing it. We are not willing to put in the hours required, because it is difficult.
+                    
+                    A previous article of mine touches on how you may not be working as hard as you think, and this could be true for a lot of people. We tend to shirk work when it gets tough.
+                    
+                    The majority of the time we do this, it’s because of a few factors. Maybe, we don’t like the job we are doing and see no reason to bust a gut. Maybe, we’re not seeing results, become demotivated and stop giving 100%, or maybe we can’t be bothered anymore.</p>
+            
+            </div>
+        
+            <div class="blog-card">
+                <h2>Smart work...</h2>
+                <p>“I’ll choose a lazy person to do a hard job because a lazy person will find an easy way to do it.” We aren’t sure exactly who said this, but we absolutely believe it. This quote challenges you to evaluate your workflows and whether your output justifies the amount of energy you put into it.
+        
+                    That’s not to say you should try to cut corners — quite the opposite. It’s about maximizing efficiency and producing the best work with less effort.
+                    
+                    This is especially important in a fast-paced environment. Turning projects around quickly will put you ahead of the pack and help your organization stay on top of its mission.
+                    
+                    But, efficiency isn’t always easy. While your habits might stop you because you’re used to doing it your way, sometimes it’ll be organizational processes or the bureaucratic red tape getting in the way of project approvals and deadlines.</p>
+            </div>
+        
+            <!-- Add more blog cards as needed -->
+        </section>
+    </div>
+</div>
+<script>
+    function logout() {
+        // Perform logout operation here, e.g., redirect to logout route
+        window.location.href = "/logout";
+    }
+
+   
+</script>
+
+<%- include('../layouts/footer.ejs') %>

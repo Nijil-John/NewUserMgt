@@ -1,0 +1,89 @@
+
+<!-- <% if(typeof message !=="undefined" ){
+    %>
+    <p style="color: green;"><%= message %></p>
+    <%
+ } %>
+
+
+<h1>Welcome, <%= username %></h1>
+<form action="/admin/search" method="GET">
+    <label for="search">Search User:</label>
+    <input type="text" id="search" name="search">
+    <button type="submit">Search</button>
+</form>
+<h2>User Data:</h2>
+<ul>
+    <% users.forEach(user => { %>
+        <li><%= user.username %> - <%= user.email %></li>
+    <% }); %>
+</ul>
+<a href="/admin/create">Create User</a>
+<a href="/admin/logout">Logout</a>
+ -->
+
+
+
+ const loadDashboard = async(req,res)=>{
+    try {
+        const userData =await User.findById({_id:req.session.user_id})
+        res.render('adminhome.ejs',{admin:userData})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+<table style="width: 50%">
+    <tr>
+        <td><img src="/userImage/<%= admin.image %>" width="100px" height="100px"  alt="<%= admin.image %>"></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= admin.mobile %></td>
+    </tr>
+</table>
+
+
+
+<table width="60%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+    </tr>
+
+   <%
+   if(user.length>0){
+    for(let i=0; i <user.length;i++){
+        %>
+        <tr>
+            <td><%= user[i].name></td>
+            <td><%= user[i].email></td>
+            <td><%= user[i].name></td>
+        </tr>
+        <%
+    }
+
+   }else{
+    %>
+    <tr>
+        <td colspan="5">users Not found</td>
+    </tr>
+
+    <%
+   }
+   %>
+</table>
+
+is admin?
+<span>Admin</span><br>
+            <input type="radio"  name="verify" value="1" <% if(user.isAdmin === '1'){%>checked <% } %> >
+            <label for="">Admin </label>
+            <input type="radio"  name="verify" value="0" <% if(user.isAdmin =='0'){ %> checked <% } %> >
+            <label for="">Not Admin</label>
+            <br>
+            <br>

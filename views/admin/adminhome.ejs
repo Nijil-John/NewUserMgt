@@ -1,0 +1,72 @@
+<%- include('../layouts/header.ejs') %> 
+
+<style>
+
+body {
+    background-color: #f0f0f0; /* Set body background color */
+    color: #333; /* Set body text color */
+    text-align: center; /* Center align text */
+}
+
+.container {
+    margin-top: 50px; /* Add margin from the top for spacing */
+}
+
+h1 {
+    color: inherit; /* Inherit body text color for heading */
+}
+
+#adminHome {
+    margin: 0 auto; /* Center align the table */
+    width: 50%; /* Set table width */
+    border-collapse: collapse; /* Collapse table borders */
+}
+
+#adminHome td {
+    padding: 10px; /* Add padding to table cells */
+    border: 1px solid #ccc; /* Add border to table cells */
+}
+
+a {
+    color: inherit; /* Inherit body text color for links */
+    text-decoration: none; /* Remove default underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover for links */
+}
+
+.adminHomeTableRow {
+    background-color: #f9f9f9; /* Set background color for table rows */
+}
+
+
+
+</style>
+
+
+
+<h1 id="adminhomeHeading">Welcome to adminSetup</h1>
+
+<a href="/admin/dashboard">Dashboard</a>
+
+<table style="width: 50%" id="adminHome">
+    <!-- <tr>
+        <td><img src="./userImage/<%= admin.image %>" width="100px" height="100px"  alt="<%= admin.image %>"></td>
+    </tr> -->
+    <tr class="adminHomeTableRow">
+        <td>Name</td>
+        <td><%= admin.name %></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= admin.mobile %></td>
+    </tr>
+</table>
+
+<a href="/logout">logOut</a>
+<%- include('../layouts/footer.ejs') %>

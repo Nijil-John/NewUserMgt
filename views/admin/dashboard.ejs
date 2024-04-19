@@ -1,0 +1,122 @@
+<%- include('../layouts/header.ejs') %>
+<style>
+
+body {
+    font-family: Arial, sans-serif; /* Set font family */
+    background-color: #f0f0f0; /* Set body background color */
+    color: #333; /* Set body text color */
+    text-align: center; /* Center align text */
+}
+
+.container {
+    margin-top: 50px; /* Add margin from the top for spacing */
+}
+
+h1 {
+    color: #333; /* Set heading text color */
+}
+
+a {
+    color: #007bff; /* Set link text color */
+    text-decoration: none; /* Remove default underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover for links */
+}
+
+#adminDashboardTable {
+    margin: 20px auto; /* Center align the table */
+    width: 60%; /* Set table width */
+    border-collapse: collapse; /* Collapse table borders */
+}
+
+#admindashboardTable th,
+#admindashboardTable td {
+    padding: 10px; /* Add padding to table cells */
+    border: 1px solid #ccc; /* Add border to table cells */
+}
+
+#admindashboardTable th {
+    background-color: #f9f9f9; /* Set background color for table header row */
+}
+
+.admindashboardTableRow:nth-child(even) {
+    background-color: #f9f9f9; /* Set background color for even table rows */
+}
+
+.admindashboardTableRow:nth-child(odd) {
+    background-color: #fff; /* Set background color for odd table rows */
+}
+
+/* Styles for the form */
+form {
+    margin-top: 20px;
+}
+
+form input[type="text"] {
+    padding: 8px;
+    width: 300px;
+}
+
+form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+</style>
+
+
+
+
+    <h1>Welcome to User Management System</h1>
+    <a href="/admin/home"> go to home </a> <span> . </span>
+    <a href="/admin/new-user"> Add new User </a>
+    
+   
+        <form action="">
+            <input type="text" placeholder="search by user name,email,mobile..." name="search">
+        <input type="submit" value="search">
+
+        </form>
+    <table width="60%"  id="adminDashboardTable">
+        <tr class="admindashboardTableRow">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+        </tr>
+
+        <% if(user.length>0){
+            for(let i=0; i <user.length;i++){ %>
+                <tr class="admindashboardTableRow">
+                    <td>
+                        <%= user[i].name %>
+                    </td>
+                    <td>
+                        <%= user[i].email %>
+                    </td>
+                    <td>
+                        <%= user[i].mobile %>
+                    </td>
+                    <td><a href="/admin/edit-user?id=<%= user[i]._id %>">Edit</a></td>
+                    <td><a href="/admin/delete-user?id=<%= user[i]._id %>">Delete</a></td>
+                </tr>
+                <% } }else{ %>
+                    <tr class="admindashboardTableRow">
+                        <td colspan="5">users Not found</td>
+                    </tr>
+
+                    <% } %>
+    </table>
+
+    <%- include('../layouts/footer.ejs') %>
